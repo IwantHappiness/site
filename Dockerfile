@@ -17,11 +17,17 @@ ARG APP_NAME
 WORKDIR /app
 
 # Install host build dependencies.
-RUN apk add --no-cache clang lld musl-dev git
+RUN apk add --no-cache clang lld musl-dev git nodejs npm
 
 COPY . .
 
-# Build the application.
+# Build frontend
+RUN cd /app/frontend && \
+    npm install && \
+    npm run build && \
+    mv /app/frontend/dist /app/dist
+
+#  Build the application.
 # Leverage a cache mount to /usr/local/cargo/registry/
 # for downloaded dependencies, a cache mount to /usr/local/cargo/git/db
 # for git repository dependencies, and a cache mount to /app/target/ for
@@ -68,7 +74,7 @@ USER appuser
 COPY --from=build /bin/server /bin/
 
 # Copy the dist directory from the "build" stage.
-COPY --from=build /app/frontend/dist /app/dist
+COPY --from=build /app/dist /app/dist
 
 # Указываем рабочую директорию
 WORKDIR /app
