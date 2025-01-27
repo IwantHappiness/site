@@ -14,8 +14,6 @@ async fn main() -> std::io::Result<()> {
 		.parse::<u16>()
 		.unwrap();
 
-	println!("ваш сайт: http://localhost:{port}");
-
 	HttpServer::new(|| {
 		App::new().service(index).service(Files::new("/", "./dist"))
 	})
