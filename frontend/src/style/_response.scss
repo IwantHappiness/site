@@ -1,0 +1,52 @@
+@media (max-width: 1255px) {
+  .my-image {
+    margin-right: 100px !important;
+  }
+}
+
+@media (max-width: 1155px) {
+  .my-image {
+    margin-right: 0 !important;
+
+  }
+
+  .about-me_p {
+    text-align: center;
+  }
+
+}
+
+
+@media (max-width:1055px) {
+  .contact {
+    width: 100% !important;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    height: 300px !important;
+  }
+
+  .contact_h2 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 425px) {
+  .my-image {
+    margin-right: 0 !important;
+
+    .my-image_avatar {
+      width: 200px;
+    }
+
+  }
+
+  .about-me_p {
+    font-size: 13px;
+  }
+
+  .contact h2 {
+    font-size: 40px;
+  }
+
+}

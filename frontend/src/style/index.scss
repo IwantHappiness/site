@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "response";
 
 @mixin marker {
   width: 25px;
@@ -114,9 +115,10 @@ ul {
   }
 
   .stack_container {
-    display: flex;
-    justify-content: center;
     gap: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
 }
