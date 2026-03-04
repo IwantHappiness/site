@@ -9,10 +9,10 @@ async fn index() -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let port = env::var("PORT")
-        .unwrap_or_else(|_| "8080".to_string())
-        .parse::<u16>()
-        .unwrap();
+    let port: u16 = env::var("PORT")
+        .ok()
+        .and_then(|e| e.parse().ok())
+        .unwrap_or(8080);
 
     HttpServer::new(|| App::new().service(index).service(Files::new("/", "./dist")))
         .bind(("0.0.0.0", port))?
